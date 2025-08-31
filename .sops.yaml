@@ -1,0 +1,10 @@
+
+keys:
+  - &primary age1c3gnrec7u4cvnn8evfd9evq5gazm3f7wgj0u7ezlye4ep92ecy8qd6q6k8
+
+creation_rules:
+  - path_regex: .*\.enc$
+    key_groups:
+      - age:
+          - *primary
+
