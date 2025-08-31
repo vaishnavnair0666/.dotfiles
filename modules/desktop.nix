@@ -14,8 +14,9 @@
   environment.systemPackages = with pkgs; [
     xdg-desktop-portal-hyprland
     waybar
-    kitty
     alacritty
+    grim slurp swappy
+    wl-clipboard cliphist
   ];
 }
 
