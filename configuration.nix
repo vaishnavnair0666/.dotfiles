@@ -21,6 +21,7 @@
     ./modules/bluetooth.nix
     ./modules/fonts.nix
     ./modules/portal.nix
+    ./modules/apps.nix
   ];
 }
 
