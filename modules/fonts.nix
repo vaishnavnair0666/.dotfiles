@@ -9,8 +9,8 @@
       noto-fonts-cjk-sans
       noto-fonts-emoji
       jetbrains-mono
-      nerd-fonts.JetBrainsMono
-      nerd-fonts.FiraCode
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.fira-code
     ];
     fontconfig = {
       enable = true;
