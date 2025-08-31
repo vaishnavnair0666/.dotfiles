@@ -2,15 +2,22 @@
   description = "My NixOS + Home Manager config";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05"; #stable
+    unstable.url = "github:NixOS/nixpkgs/nixos-unstable"; #unstable
     sops-nix.url = "github:Mic92/sops-nix";
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "unstable";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, sops-nix, ... }@inputs:
+  outputs = { self, nixpkgs, unstable, home-manager, sops-nix, quickshell, ... }@inputs:
     let
       system = "x86_64-linux";
+      pkgs = import nixpkgs { inherit system; };
+      unstablePkgs = import unstable { inherit system; };
     in {
       nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
         inherit system;
@@ -24,11 +31,18 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
+  	    home-manager.backupFileExtension = "backup";
             # configure your user here
-            home-manager.users.vaish = ./home.nix;
+            home-manager.users.vaish = import ./home.nix;
+
+            home-manager.extraSpecialArgs = {
+              inherit unstablePkgs;
+	      quickshell=quickshell;
+            };
           }
         ];
       };
+      #packages.${system}.quickshell = quickshell.packages.${system}.default;
     };
 }
 

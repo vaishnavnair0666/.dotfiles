@@ -15,12 +15,17 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   environment.systemPackages = with pkgs; [
+    direnv
     brightnessctl
     git
     lazygit
     vim
     wget
     curl
+    tldr
+    nh
+    nix-output-monitor
+    nvd
   ];
 
   system.stateVersion = "25.05";
