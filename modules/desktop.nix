@@ -14,6 +14,7 @@
   environment.systemPackages = with pkgs; [
     xdg-desktop-portal-hyprland
     waybar
+    libsForQt5.dolphin
     alacritty
     grim slurp swappy
     wl-clipboard cliphist
