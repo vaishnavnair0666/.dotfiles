@@ -1,7 +1,6 @@
-{ config, pkgs, ... }:
+{ config, pkgs, unstablePkgs, ... }:
 let
     decryptedKey = builtins.readFile (builtins.toPath ./modules/secrets/github.ssh.enc);
-    unstablePkgs = import inputs.unstable { inherit pkgs.system; };
 in
 {
   home.username = "vaish";
@@ -14,7 +13,7 @@ in
     fastfetch
     firefox
     wl-clipboard
-    (unstablePkgs.quickshell)
+    unstablePkgs.quickshell
   ];
   programs.bash.enable = true;
   # Example: enable zsh
