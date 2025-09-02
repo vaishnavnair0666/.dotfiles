@@ -7,9 +7,13 @@
     sops-nix.url = "github:Mic92/sops-nix";
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "unstable";
+    };
   };
 
-  outputs = { self, nixpkgs, unstable, home-manager, sops-nix, ... }@inputs:
+  outputs = { self, nixpkgs, unstable, home-manager, sops-nix, quickshell, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -38,6 +42,7 @@
           }
         ];
       };
+      packages.${system}.quickshell = quickshell.packages.${system}.default;
     };
 }
 
