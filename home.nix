@@ -19,6 +19,9 @@ in
   programs.zsh = {
     enable = true;
   };
+  
+
+  home.file.".config/hypr".source = ./config/hypr;
 
   home.stateVersion = "25.05";
 }

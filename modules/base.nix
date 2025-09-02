@@ -16,7 +16,6 @@
 
   environment.systemPackages = with pkgs; [
     brightnessctl
-    bluez
     git
     lazygit
     vim
