@@ -21,6 +21,7 @@
     vim
     wget
     curl
+    tldr
   ];
 
   system.stateVersion = "25.05";
