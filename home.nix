@@ -20,14 +20,14 @@ in
   programs.bash= {
     bashrcExtra = ''
     eval "$(direnv hook bash)"
-    ''
+    '';
   };
   # Example: enable zsh
   programs.zsh = {
     enable = true;
     zshrcExtra = ''
       eval "$(direnv hook zsh)"
-    ''
+    '';
   };
 
   home.file.".config/hypr".source = ./config/hypr;
