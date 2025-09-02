@@ -25,7 +25,7 @@ in
   # Example: enable zsh
   programs.zsh = {
     enable = true;
-    zshrcExtra = ''
+    initExtra = ''
       eval "$(direnv hook zsh)"
     '';
   };
@@ -38,7 +38,7 @@ in
   chmod -R u+rw $HOME/.config/quickshell/default
 '';
 
-
+#hello
   home.stateVersion = "25.05";
 }
 
