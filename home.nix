@@ -23,9 +23,6 @@ in
   
 
   home.file.".config/hypr".source = ./config/hypr;
-  xdg.configFile."hypr/autostart.conf".text = ''
-    exec-once = quickshell
-  '';
 
   home.stateVersion = "25.05";
 }
