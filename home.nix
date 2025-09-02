@@ -22,6 +22,7 @@ in
   
 
   home.file.".config/hypr".source = ./config/hypr;
+  home-manager.backupFileExtension = "backup";
 
   home.stateVersion = "25.05";
 }
