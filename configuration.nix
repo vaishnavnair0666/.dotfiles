@@ -12,7 +12,7 @@
       IdentitiesOnly yes
   '';
   environment.sessionVariables = {
-    FLAKE = "/home/vaish/.dotfiles";
+    NH_FLAKE = "/home/vaish/.dotfiles";
   };
   imports = [
     ./hardware-configuration.nix
