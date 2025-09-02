@@ -23,7 +23,7 @@ in
   
 
   home.file.".config/hypr".source = ./config/hypr;
-
+  home.file.".config/quickshell".source = ./config/quickshell;
   home.stateVersion = "25.05";
 }
 
