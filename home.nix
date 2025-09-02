@@ -13,6 +13,7 @@ in
     fastfetch
     firefox
     wl-clipboard
+    quickshell
   ];
   programs.bash.enable = true;
   # Example: enable zsh
@@ -22,6 +23,9 @@ in
   
 
   home.file.".config/hypr".source = ./config/hypr;
+  xdg.configFile."hypr/autostart.conf".text = ''
+    exec-once = quickshell
+  '';
 
   home.stateVersion = "25.05";
 }
