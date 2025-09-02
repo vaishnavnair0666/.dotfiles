@@ -38,13 +38,6 @@
             home-manager.extraSpecialArgs = {
               inherit unstablePkgs;
             };
-         home.packages = [
-           (inputs.quickshell.packages.${system}.default.withModules [
-             pkgs.qt5.qtquickcontrols2
-             pkgs.qt5.qtgraphicaleffects
-           ])
-         ];
-	    
           }
         ];
       };

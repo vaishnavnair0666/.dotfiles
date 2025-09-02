@@ -19,7 +19,12 @@ in
   programs.zsh = {
     enable = true;
   };
-  
+  home.packages = [
+    (inputs.quickshell.packages.${pkgs.system}.default.withModules [
+      pkgs.qt5.qtquickcontrols2
+      pkgs.qt5.qtgraphicaleffects
+    ])
+  ];  
 
   home.file.".config/hypr".source = ./config/hypr;
 
