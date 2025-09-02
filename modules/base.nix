@@ -24,6 +24,8 @@
     curl
     tldr
     nh
+    nix-output-monitor
+    nvd
   ];
 
   system.stateVersion = "25.05";
