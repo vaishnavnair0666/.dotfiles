@@ -23,7 +23,13 @@ in
   
 
   home.file.".config/hypr".source = ./config/hypr;
-  home.file.".config/quickshell".source = ./config/quickshell;
+
+  home.activation.quickshell = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  mkdir -p $HOME/.config/quickshell/default
+  cp -r ${./config/quickshell/default}/* $HOME/.config/quickshell/default/
+'';
+
+
   home.stateVersion = "25.05";
 }
 
