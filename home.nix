@@ -1,4 +1,4 @@
-{ config, pkgs, lib, unstablePkgs, ... }:
+{ config, pkgs, lib, unstablePkgs,quickshell, ... }:
 let
     decryptedKey = builtins.readFile (builtins.toPath ./modules/secrets/github.ssh.enc);
 in
@@ -13,7 +13,7 @@ in
     fastfetch
     firefox
     wl-clipboard
-    (inputs.quickshell.packages.${pkgs.system}.default.withModules [
+    (quickshell.packages.${pkgs.system}.default.withModules [
       pkgs.qt5.qtquickcontrols2
       pkgs.qt5.qtgraphicaleffects
     ]) 

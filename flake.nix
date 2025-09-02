@@ -37,11 +37,12 @@
 
             home-manager.extraSpecialArgs = {
               inherit unstablePkgs;
+	      quickshell=quickshell;
             };
           }
         ];
       };
-      packages.${system}.quickshell = quickshell.packages.${system}.default;
+      #packages.${system}.quickshell = quickshell.packages.${system}.default;
     };
 }
 
