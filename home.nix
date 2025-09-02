@@ -25,7 +25,7 @@ in
   # Example: enable zsh
   programs.zsh = {
     enable = true;
-    initExtra = ''
+    initContent = ''
       eval "$(direnv hook zsh)"
     '';
   };

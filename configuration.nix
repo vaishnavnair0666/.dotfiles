@@ -11,7 +11,9 @@
       IdentityFile /etc/ssh/github
       IdentitiesOnly yes
   '';
-
+  environment.sessionVariables = {
+    FLAKE = "/home/vaish/.dotfiles";
+  };
   imports = [
     ./hardware-configuration.nix
     ./modules/base.nix

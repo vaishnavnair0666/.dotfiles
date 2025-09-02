@@ -23,6 +23,7 @@
     wget
     curl
     tldr
+    nh
   ];
 
   system.stateVersion = "25.05";
