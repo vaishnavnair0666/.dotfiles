@@ -14,8 +14,8 @@ in
     firefox
     wl-clipboard
     (quickshell.packages.${pkgs.system}.default.withModules [
-      pkgs.qt6.qtquickcontrols2
-      pkgs.qt6.qtgraphicaleffects
+      pkgs.qt6.qt6.qtquickcontrols2
+      pkgs.qt6.qt6.qtgraphicaleffects
     ]) 
   ];
   programs.bash.enable = true;
