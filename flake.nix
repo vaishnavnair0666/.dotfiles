@@ -29,7 +29,7 @@
 
   	    home-manager.backupFileExtension = "backup";
             # configure your user here
-            home-manager.users.vaish = ./home.nix; {
+            home-manager.users.vaish = ./home.nix {
 	      inherit pkgs unstablePkgs;
 	    };
           }
