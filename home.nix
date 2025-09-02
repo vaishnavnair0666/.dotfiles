@@ -13,10 +13,6 @@ in
     fastfetch
     firefox
     wl-clipboard
-    (unstablePkgs.quickshell.withModules [
-      unstablePkgs.qt5.qtquickcontrols2
-      unstablePkgs.qt5.qtgraphicaleffects
-    ])
   ];
   programs.bash.enable = true;
   # Example: enable zsh
