@@ -18,6 +18,7 @@
     alacritty
     grim slurp swappy
     wl-clipboard cliphist
+    spotify ## below are apps 
   ];
 }
 

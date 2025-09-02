@@ -2,7 +2,8 @@
   description = "My NixOS + Home Manager config";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05"; #stable
+    unstable.url = "github:NixOs/nixpkgs/nixos-unstable"; #unstable
     sops-nix.url = "github:Mic92/sops-nix";
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -11,6 +12,8 @@
   outputs = { self, nixpkgs, home-manager, sops-nix, ... }@inputs:
     let
       system = "x86_64-linux";
+      pkgs = import nixpkgs { inherit system; };
+      unstablePkgs = import unstable { inherit system; };
     in {
       nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
         inherit system;
@@ -26,7 +29,9 @@
 
   	    home-manager.backupFileExtension = "backup";
             # configure your user here
-            home-manager.users.vaish = ./home.nix;
+            home-manager.users.vaish = ./home.nix; {
+	      inherit pkgs unstablePkgs;
+	    };
           }
         ];
       };
