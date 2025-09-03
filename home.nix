@@ -1,10 +1,38 @@
-{ config, pkgs, lib, unstablePkgs,quickshell, ... }:
+{ config, pkgs, lib, unstablePkgs, quickshell, nvf, ... }:
 let
     decryptedKey = builtins.readFile (builtins.toPath ./modules/secrets/github.ssh.enc);
 in
 {
   home.username = "vaish";
   home.homeDirectory = "/home/vaish";
+  imports = [
+    nvf.homeManagerModules.nvf
+  ];
+
+  programs.nvf = {
+    enable = true;
+    enableManpages = true;
+
+    # Example: Add plugins, LSPs, config
+    settings = {
+      vim.opt.number = true; # line numbers
+      vim.opt.relativenumber = true;
+    };
+
+    plugins = {
+      telescope.enable = true;
+      treesitter.enable = true;
+      lsp.enable = true;
+    };
+
+    # Example LSP configuration
+    languageServers = {
+      svelte.enable = true;
+      tsserver.enable = true;
+      pyright.enable = true;
+    };
+};
+
 
   home.packages = with pkgs; [
     neovim

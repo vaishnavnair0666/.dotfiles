@@ -11,9 +11,14 @@
       IdentityFile /etc/ssh/github
       IdentitiesOnly yes
   '';
-  environment.sessionVariables = {
-    NH_FLAKE = "/home/vaish/.dotfiles";
+
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/home/vaish/.dotfiles"; # sets NH_OS_FLAKE variable for you
   };
+
   imports = [
     ./hardware-configuration.nix
     ./modules/base.nix
