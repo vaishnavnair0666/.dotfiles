@@ -1,4 +1,4 @@
-{ config, pkgs, lib, unstablePkgs,quickshell, ... }:
+{ config, pkgs, lib, unstablePkgs, quickshell, ... }:
 let
     decryptedKey = builtins.readFile (builtins.toPath ./modules/secrets/github.ssh.enc);
 in

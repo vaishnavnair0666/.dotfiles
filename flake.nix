@@ -7,6 +7,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "unstable";
@@ -36,7 +37,7 @@
             home-manager.users.vaish = import ./home.nix;
 
             home-manager.extraSpecialArgs = {
-              inherit unstablePkgs;
+              inherit unstablePkgs ;
 	      quickshell=quickshell;
             };
           }
