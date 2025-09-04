@@ -46,9 +46,18 @@ in
       ${builtins.readFile ./config/nvim/options.lua}
 
       '';
+  extraPackages = with pkgs; [
+      lua-language-server
+      nil
 
+      xclip
+      wl-clipboard
+    ];
     plugins = with pkgs.vimPlugins; [
-
+      {
+        plugin = which-key-nvim;
+        config = toLuaFile ./config/nvim/plugin/which-key.lua;
+      }
       {
         plugin = nvim-lspconfig;
         config = toLuaFile ./config/nvim/plugin/lsp.lua;
