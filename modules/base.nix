@@ -20,6 +20,7 @@
     git
     lazygit
     vim
+    tmux
     wget
     curl
     tldr

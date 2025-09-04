@@ -8,17 +8,13 @@
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    nvf = {
-      url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs"; 
-    };
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "unstable";
     };
   };
 
-  outputs = { self, nixpkgs, unstable, home-manager, sops-nix, quickshell, nvf, ... }@inputs:
+  outputs = { self, nixpkgs, unstable, home-manager, sops-nix, quickshell, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -41,7 +37,7 @@
             home-manager.users.vaish = import ./home.nix;
 
             home-manager.extraSpecialArgs = {
-              inherit unstablePkgs nvf;
+              inherit unstablePkgs ;
 	      quickshell=quickshell;
             };
           }
