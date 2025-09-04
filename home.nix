@@ -7,7 +7,6 @@ in
   home.homeDirectory = "/home/vaish";
 
   home.packages = with pkgs; [
-    neovim
     alacritty
     btop
     fastfetch
@@ -30,58 +29,84 @@ in
     '';
   };
   
-  programs.neovim = {
+  programs.neovim =
+  let
+    toLua = str: "lua << EOF\n${str}\nEOF\n";
+    toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
+  in {
     enable = true;
 
     viAlias = true;
     vimAlias = true;
-    vimdiffAluas = true;
+    vimdiffAlias = true;
 
     extraLuaConfig = ''
       -- lua code
 
-      ${builtins.readFile ./configs/nvim/options.lua}
+      ${builtins.readFile ./config/nvim/options.lua}
 
-      ''
+      '';
 
-    plugins = [
-	pkgs.vimPlugins.nvim-lspconfig
-	pkgs.vimPlugins.comment-nvim
+    plugins = with pkgs.vimPlugins; [
 
-	pkgs.vimPlugins.gruvbox-nvim
+      {
+        plugin = nvim-lspconfig;
+        config = toLuaFile ./config/nvim/plugin/lsp.lua;
+      }
 
-	pkgs.vimPlugins.neodev-nvim
+      {
+        plugin = comment-nvim;
+        config = toLua "require(\"Comment\").setup()";
+      }
 
-	pkgs.vimPlugins.nvim-cmp
+      {
+        plugin = gruvbox-nvim;
+        config = "colorscheme gruvbox";
+      }
 
-	pkgs.vimPlugins.nvim-cmp;
+      neodev-nvim
 
-	pkgs.vimPlugins.telescope-nvim;
+      nvim-cmp 
+      {
+        plugin = nvim-cmp;
+        config = toLuaFile ./config/nvim/plugin/cmp.lua;
+      }
 
-	pkgs.vimPlugins.telescope-fzf-native-nvim
+      {
+        plugin = telescope-nvim;
+        config = toLuaFile ./config/nvim/plugin/telescope.lua;
+      }
 
-	pkgs.vimPlugins.cmp_luasnip
+      telescope-fzf-native-nvim
 
-	pkgs.vimPlugins.cmp-nvim-lsp
+      cmp_luasnip
+      cmp-nvim-lsp
 
-	pkgs.vimPlugins.luasnip
+      luasnip
+      friendly-snippets
 
-	pkgs.vimPlugins.friendly-snippets
 
-	pkgs.vimPlugins.lualine-nvim
+      lualine-nvim
+      nvim-web-devicons
 
-	pkgs.vimPlugins.nvim-web-devicons
-	(pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
-	  p.tree-sitter-nix
-	  p.tree-sitter-vim
-	  p.tree-sitter-bash
-	  p.tree-sitter-lua
-	  p.tree-sitter-python
-	  p.tree-sitter-json
-	  ];)
-        );
+      {
+        plugin = (nvim-treesitter.withPlugins (p: [
+          p.tree-sitter-nix
+          p.tree-sitter-vim
+          p.tree-sitter-bash
+          p.tree-sitter-lua
+          p.tree-sitter-python
+          p.tree-sitter-json
+        ]));
+        config = toLuaFile ./config/nvim/plugin/treesitter.lua;
+      }
 
-	pkgs.vimPlugins.vim-nix
+      vim-nix
+
+      # {
+      #   plugin = vimPlugins.own-onedark-nvim;
+      #   config = "colorscheme onedark";
+      # }
     ];
   };
 
