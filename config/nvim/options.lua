@@ -1,5 +1,8 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+-- Required for which-key to trigger properly
+vim.o.timeout = true
+vim.o.timeoutlen = 500 -- time in ms to wait for a mapped sequence
 
 vim.o.clipboard = 'unnamedplus'
 
