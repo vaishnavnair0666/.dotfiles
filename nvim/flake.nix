@@ -36,12 +36,13 @@
               #options.desc = "Find files";
             #}
           #];
-
-          plugins = {
-		    mini = {
-              enable = true;
-              modules.icons = true;
+          plugins.mini = {
+            enable = true;
+            modules.icons = {
+              mockDevIcons = true;
             };
+          };
+          plugins = {
             telescope.enable = true;
             treesitter.enable = true;
 			which-key = {
@@ -51,19 +52,23 @@
                   __unkeyed-1 = "<leader>f"; group = "file";
                 }
                 {
-                  __unkeyed-1 = "<leader>ff"; __unkeyed-2 = "<cmd>Telescope find_files<cr>";
+                  __unkeyed-1 = "<leader>ff"; 
+				  __unkeyed-2 = "<cmd>Telescope find_files<cr>";
                   desc = "Find files";
                 }
                 {
-                  __unkeyed-1 = "<leader>fg"; __unkeyed-2 = "<cmd>Telescope live_grep<cr>";
+                  __unkeyed-1 = "<leader>fg"; 
+				  __unkeyed-2 = "<cmd>Telescope live_grep<cr>";
                   desc = "Live grep";
                 }
                 {
-                  __unkeyed-1 = "<leader>fb"; __unkeyed-2 = "<cmd>Telescope buffers<cr>";
+                  __unkeyed-1 = "<leader>fb"; 
+				  __unkeyed-2 = "<cmd>Telescope buffers<cr>";
                   desc = "Buffers";
                 }
                 {
-                  __unkeyed-1 = "<leader>fh"; __unkeyed-2 = "<cmd>Telescope help_tags<cr>";
+                  __unkeyed-1 = "<leader>fh"; 
+				  __unkeyed-2 = "<cmd>Telescope help_tags<cr>";
                   desc = "Help tags";
                 }
               ];
