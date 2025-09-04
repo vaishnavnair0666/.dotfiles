@@ -38,7 +38,7 @@
             home-manager.users.vaish = {
 			  imports = [
 			    ./home.nix
-				inputs.nvim.homeManager.Modules.default
+				inputs.nvim.homeManagerModules.default
 			  ];
 			};
 
