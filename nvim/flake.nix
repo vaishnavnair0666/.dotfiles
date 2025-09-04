@@ -11,6 +11,7 @@
   outputs = { self, nixpkgs, nixvim, home-manager, ... }:
     let
       system = "x86_64-linux";
+	      pkgs = import nixpkgs { inherit system; };
     in {
       # Home-Manager module exposing Neovim
       homeManagerModules.default = {
@@ -28,7 +29,11 @@
             tabstop = 4;
             shiftwidth = 4;
           };
-
+extraPlugins = with pkgs.vimPlugins; [
+    vim-dadbod
+    vim-dadbod-ui
+    vim-dadbod-completion
+  ];
           #keymaps = [
            # {
               #action = "<cmd>Telescope find_files<cr>";
@@ -41,8 +46,15 @@
             modules.icons = {
               mockDevIcons = true;
             };
+			      modules.surround = { }; # editing quotes, tags, etc.
           };
           plugins = {
+		   # Core UI
+    lualine.enable = true;
+    bufferline.enable = true;
+    nvim-tree.enable = true;
+    gitsigns.enable = true;
+    comment.enable = true;
             telescope.enable = true;
             treesitter.enable = true;
 			which-key = {
@@ -71,6 +83,26 @@
 				  __unkeyed-2 = "<cmd>Telescope help_tags<cr>";
                   desc = "Help tags";
                 }
+				 # UI toggles
+        {
+          __unkeyed-1 = "<leader>u"; group = "UI toggles";
+        }
+        {
+          __unkeyed-1 = "<leader>un"; __unkeyed-2 = ":set number!<CR>";
+          desc = "Toggle line numbers";
+        }
+        {
+          __unkeyed-1 = "<leader>ur"; __unkeyed-2 = ":set relativenumber!<CR>";
+          desc = "Toggle relative numbers";
+        }
+        {
+          __unkeyed-1 = "<leader>uw"; __unkeyed-2 = ":set wrap!<CR>";
+          desc = "Toggle word wrap";
+        }
+        {
+          __unkeyed-1 = "<leader>us"; __unkeyed-2 = ":set spell!<CR>";
+          desc = "Toggle spell check";
+        }
               ];
     		  settings = {
       			# optional, but handy
@@ -94,6 +126,17 @@
             cmp = {
               enable = true;
             };
+
+	 # REST API testing
+    rest.enable = true;
+
+    # Formatting
+    conform-nvim.enable = true;
+
+    # UI niceties
+    indent-blankline.enable = true;
+    todo-comments.enable = true;
+    fidget.enable = true;
           };
         };
       };
