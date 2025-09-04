@@ -18,6 +18,7 @@
     direnv
     brightnessctl
     git
+	yazi
     lazygit
     vim
     tmux

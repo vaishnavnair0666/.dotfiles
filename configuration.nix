@@ -29,6 +29,7 @@
     ./modules/fonts.nix
     ./modules/portal.nix
     ./modules/apps.nix
+	./modules/dev_languages.nix
   ];
 }
 

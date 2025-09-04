@@ -12,9 +12,10 @@
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "unstable";
     };
+	nvim.url = "path:./nvim";
   };
 
-  outputs = { self, nixpkgs, unstable, home-manager, sops-nix, quickshell, ... }@inputs:
+  outputs = { self, nixpkgs, unstable, home-manager, sops-nix, quickshell, nvim, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -34,7 +35,12 @@
 
   	    home-manager.backupFileExtension = "backup";
             # configure your user here
-            home-manager.users.vaish = import ./home.nix;
+            home-manager.users.vaish = {
+			  imports = [
+			    ./home.nix
+				inputs.nvim.homeManagerModules.default
+			  ];
+			};
 
             home-manager.extraSpecialArgs = {
               inherit unstablePkgs ;
