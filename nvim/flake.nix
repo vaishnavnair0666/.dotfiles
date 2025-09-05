@@ -46,10 +46,18 @@ extraPlugins = with pkgs.vimPlugins; [
             modules.icons = {
               mockDevIcons = true;
             };
-			      modules.surround = { }; # editing quotes, tags, etc.
+			modules.starter = {};
+			modules.surround = {
+              mappings = {
+                add = "<leader>sa";
+                delete = "<leader>sd";
+                find = "<leader>sf";
+                replace = "<leader>sr";
+              };
+			}; # editing quotes, tags, etc.
           };
           plugins = {
-		   # Core UI
+# Core UI
     lualine.enable = true;
     bufferline.enable = true;
     nvim-tree.enable = true;
