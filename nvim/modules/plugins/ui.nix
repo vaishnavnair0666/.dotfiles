@@ -1,5 +1,37 @@
 {...}:
 {
+	programs.nixvim = {
+		colorscheme = "miniwinter";
+	};
+	programs.nixvim.extraConfigLua = ''
+		require("neo-tree").setup({
+				close_if_last_window = true,
+				popup_border_style = "rounded",
+				enable_git_status = true,
+				enable_diagnostics = true,
+				window = {
+				width = 30,
+				mappings = {
+				["<cr>"] = "open",
+				["o"] = "open",
+				["s"] = "open_split",
+				["v"] = "open_vsplit",
+				["t"] = "open_tabnew",
+				["q"] = "close_window",
+				},
+				},
+				filesystem = {
+				filtered_items = {
+				visible = false,
+				hide_dotfiles = true,
+				hide_gitignored = true,
+				},
+				follow_current_file = {
+					enabled = true,
+				},
+				},
+		})
+	'';
 	programs.nixvim.plugins = {
 		lualine.enable = true;
 		bufferline = {
@@ -15,38 +47,8 @@
 				};
 			};
 		};
-		neo-tree = {
-			enable = true;
-			settings = {
-				close_if_last_window = true; # auto close when it's the last window
-					popup_border_style = "rounded";
-				enable_git_status = true;
-				enable_diagnostics = true;
-				window = {
-					width = 30;
-					mappings = {
-# Custom keymaps inside Neo-tree
-						"<cr>"= "open";
-						"o" = "open";
-						"s" = "open_split";
-						"v" = "open_vsplit";
-						"t" = "open_tabnew";
-						"q" = "close_window";
-					};
-				};
-				filesystem = {
-					filtered_items = {
-						visible = false;
-						hide_dotfiles = true;
-						hide_gitignored = true;
-					};
-					follow_current_file = {
-						enabled = true;
-					};
-				};
-			};
-		};
 		gitsigns.enable = true;
+		neo-tree.enable = true;
 		comment.enable = true;
 		telescope.enable = true;
 		treesitter = {

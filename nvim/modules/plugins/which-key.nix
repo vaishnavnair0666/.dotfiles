@@ -1,15 +1,24 @@
 { ... }:
 {
-	programs.nixvim.plugins.which-__unkeyed-1 = {
+	programs.nixvim.plugins.which-key= {
 		enable = true;
 
 		settings = {
-# Which-__unkeyed-1 popup window
+# Which-key popup window
 			win = {
-				border = "single";
+				border = "rounded";
+				padding = [1 2];
+				no_overlap = true;
+				title = true;
+				title_pos = "center"; 
+				zindex = 1000;
 			};
-
-			plugins = {
+			layout = {
+				align = "right";
+				spacing = 3;
+				height = { min = 4; max = 15; };
+				width = { min = 20; max = 50; };
+			};			plugins = {
 				spelling.enabled = true;
 			};
 
@@ -126,96 +135,85 @@
 				__unkeyed-2 = ":vertical resize +2<CR>";
 				desc = "Increase split width";
 			}
- # Buffer navigation group
-    { __unkeyed-1 = "<leader>b"; group = "buffers"; }
+# Buffer navigation group
+			{ __unkeyed-1 = "<leader>b"; group = "buffers"; }
 
-    # Switch between buffers
-    {
-      __unkeyed-1 = "<leader>bn";
-      __unkeyed-2 = "<cmd>BufferLineCycleNext<CR>";
-      desc = "Next buffer";
-    }
-    {
-      __unkeyed-1 = "<leader>bp";
-      __unkeyed-2 = "<cmd>BufferLineCyclePrev<CR>";
-      desc = "Previous buffer";
-    }
+# Switch between buffers
+			{
+				__unkeyed-1 = "<leader>bn";
+				__unkeyed-2 = "<cmd>BufferLineCycleNext<CR>";
+				desc = "Next buffer";
+			}
+			{
+				__unkeyed-1 = "<leader>bp";
+				__unkeyed-2 = "<cmd>BufferLineCyclePrev<CR>";
+				desc = "Previous buffer";
+			}
 
-    # Reordering
-    {
-      __unkeyed-1 = "<leader>bm";
-      __unkeyed-2 = "<cmd>BufferLineMoveNext<CR>";
-      desc = "Move buffer right";
-    }
-    {
-      __unkeyed-1 = "<leader>bh";
-      __unkeyed-2 = "<cmd>BufferLineMovePrev<CR>";
-      desc = "Move buffer left";
-    }
+# Reordering
+			{
+				__unkeyed-1 = "<leader>bm";
+				__unkeyed-2 = "<cmd>BufferLineMoveNext<CR>";
+				desc = "Move buffer right";
+			}
+			{
+				__unkeyed-1 = "<leader>bh";
+				__unkeyed-2 = "<cmd>BufferLineMovePrev<CR>";
+				desc = "Move buffer left";
+			}
 
-    # Direct access (buffers 1-9)
-    {
-      __unkeyed-1 = "<leader>1";
-      __unkeyed-2 = "<cmd>BufferLineGoToBuffer 1<CR>";
-      desc = "Go to buffer 1";
-    }
-    {
-      __unkeyed-1 = "<leader>2";
-      __unkeyed-2 = "<cmd>BufferLineGoToBuffer 2<CR>";
-      desc = "Go to buffer 2";
-    }
-    # … repeat for 3–9 if you like
+# Direct access (buffers 1-9)
+			{
+				__unkeyed-1 = "<leader>1";
+				__unkeyed-2 = "<cmd>BufferLineGoToBuffer 1<CR>";
+				desc = "Go to buffer 1";
+			}
+			{
+				__unkeyed-1 = "<leader>2";
+				__unkeyed-2 = "<cmd>BufferLineGoToBuffer 2<CR>";
+				desc = "Go to buffer 2";
+			}
 
-    {
-      __unkeyed-1 = "<leader>3";
-      __unkeyed-2 = "<cmd>BufferLineGoToBuffer 2<CR>";
-      desc = "Go to buffer 3";
-    }
-    {
-      __unkeyed-1 = "<leader>5";
-      __unkeyed-2 = "<cmd>BufferLineGoToBuffer 2<CR>";
-      desc = "Go to buffer 4";
-    }
-    {
-      __unkeyed-1 = "<leader>5";
-      __unkeyed-2 = "<cmd>BufferLineGoToBuffer 2<CR>";
-      desc = "Go to buffer 5";
-    }
-    # Close
-    {
-      __unkeyed-1 = "<leader>bd";
-      __unkeyed-2 = "<cmd>bdelete<CR>";
-      desc = "Close buffer";
-    }
-    {
-      __unkeyed-1 = "<leader>bo";
-      __unkeyed-2 = "<cmd>BufferLineCloseOthers<CR>";
-      desc = "Close other buffers";
-    }
+			{
+				__unkeyed-1 = "<leader>3";
+				__unkeyed-2 = "<cmd>BufferLineGoToBuffer 2<CR>";
+				desc = "Go to buffer 3";
+			}
+			{
+				__unkeyed-1 = "<leader>4";
+				__unkeyed-2 = "<cmd>BufferLineGoToBuffer 2<CR>";
+				desc = "Go to buffer 4";
+			}
+# Close
+			{
+				__unkeyed-1 = "<leader>bd";
+				__unkeyed-2 = "<cmd>bdelete<CR>";
+				desc = "Close buffer";
+			}
+			{
+				__unkeyed-1 = "<leader>bo";
+				__unkeyed-2 = "<cmd>BufferLineCloseOthers<CR>";
+				desc = "Close other buffers";
+			}
 #Explorer
-	{ __unkeyed-1 = "<leader>e"; group = "explorer"; }
+			{ __unkeyed-1 = "<leader>e"; group = "explorer"; }
 
-	{
-		__unkeyed-1 = "<leader>ee";
-		__unkeyed-2 = "<cmd>Neotree toggle<CR>";
-		desc = "Toggle Neo-tree";
-	}
-	{
-		__unkeyed-1 = "<leader>ef";
-		__unkeyed-2 = "<cmd>Neotree focus<CR>";
-		desc = "Focus Neo-tree";
-	}
-	{
-		__unkeyed-1 = "<leader>ec";
-		__unkeyed-2 = "<cmd>Neotree close<CR>";
-		desc = "Close Neo-tree";
-	}
-	{
-		__unkeyed-1 = "<leader>er";
-		__unkeyed-2 = "<cmd>Neotree reveal<CR>";
-		desc = "Reveal current file";
-	}
-	];
+			{
+				__unkeyed-1 = "<leader>ee";
+				__unkeyed-2 = "<cmd>Neotree toggle<CR>";
+				desc = "Toggle Neo-tree";
+			}
+			{
+				__unkeyed-1 = "<leader>ef";
+				__unkeyed-2 = "<cmd>Neotree focus<CR>";
+				desc = "Focus Neo-tree";
+			}
+			{
+				__unkeyed-1 = "<leader>er";
+				__unkeyed-2 = "<cmd>Neotree reveal<CR>";
+				desc = "Reveal current file";
+			}
+			];
 		};
 	};
 }
