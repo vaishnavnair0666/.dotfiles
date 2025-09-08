@@ -15,8 +15,8 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   environment.systemPackages = with pkgs; [
-    direnv
     brightnessctl
+	unzip
     git
 	yazi
     lazygit
@@ -25,6 +25,7 @@
     wget
     curl
     tldr
+	fd
     nh
     nix-output-monitor
     nvd
