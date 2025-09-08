@@ -2,7 +2,7 @@
 	description = "Neovim config using nixvim";
 
 	inputs = {
-		nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+		#nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
 		nixvim.url = "github:nix-community/nixvim";
 		home-manager.url = "github:nix-community/home-manager/release-25.05";
 		home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -31,7 +31,7 @@
 			];
 
 				programs.nixvim.enable = true;
-				programs.nixvim.nixpkgs.useGlobalPackages = true;
+	#			programs.nixvim.nixpkgs.useGlobalPackages = true;
 
 				programs.nixvim.globals.mapleader = " "; # <space> is leader
 # Example starter config

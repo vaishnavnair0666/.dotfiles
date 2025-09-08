@@ -13,7 +13,7 @@
       inputs.nixpkgs.follows = "unstable";
     };
 	nvim.url = "path:./nvim";
-	nvim.inputs.nixpkgs.follows = "nixpkgs";
+	nvim.inputs.nixpkgs.follows = "unstable";
   };
 
   outputs = { self, nixpkgs, unstable, home-manager, sops-nix, quickshell, nvim, ... }@inputs:

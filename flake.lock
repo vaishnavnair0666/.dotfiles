@@ -210,7 +210,7 @@
       "inputs": {
         "home-manager": "home-manager_2",
         "nixpkgs": [
-          "nixpkgs"
+          "unstable"
         ],
         "nixvim": "nixvim"
       },
