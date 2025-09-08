@@ -31,6 +31,8 @@
 
 			programs.nixvim = {
 				enable = true;
+				nixpkgs.useGlobalPackages = true;
+
 				globals.mapleader = " "; # <space> is leader
 # Example starter config
 					opts = {
