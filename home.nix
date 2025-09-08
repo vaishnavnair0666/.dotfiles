@@ -12,8 +12,7 @@ in
     fastfetch
     firefox
     wl-clipboard
-    (quickshell.packages.${pkgs.system}.default.withModules [
-    ]) 
+	quickshell.packages.${pkgs.system}.default
   ];
   programs.bash.enable = true;
   programs.bash= {
@@ -31,11 +30,8 @@ in
 
   home.file.".config/hypr".source = ./config/hypr;
 
-  home.activation.quickshell = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-  mkdir -p $HOME/.config/quickshell/default
-  cp -r ${./config/quickshell/default}/* $HOME/.config/quickshell/default/
-  chmod -R u+rw $HOME/.config/quickshell/default
-'';
+  home.file.".config/quickshell/default".source = ./config/quickshell/default;
+  home.file.".config/quickshell/default".recursive = true;
 
 #hello
   home.stateVersion = "25.05";
