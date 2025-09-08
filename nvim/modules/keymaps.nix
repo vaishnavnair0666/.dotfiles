@@ -1,8 +1,8 @@
 {...}:
 {
-	programs.nixvim = {
+	programs.nixvim.keymaps = 
 
-		keymaps = [
+		[
 # Flash
 		{
 			key = "s";
@@ -44,5 +44,4 @@
 			options.desc = "Dismiss all notifications";
 		}
 		];
-	};
 }

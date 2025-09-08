@@ -1,8 +1,6 @@
 {...}:
 {
-	programs.nixvim = {
-		colorscheme = "miniwinter";
-	};
+	programs.nixvim.colorscheme = "miniwinter";
 	programs.nixvim.extraConfigLua = ''
 		require("neo-tree").setup({
 				close_if_last_window = true,
