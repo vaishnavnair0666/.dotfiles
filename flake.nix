@@ -6,7 +6,7 @@
 			unstable.url = "github:NixOS/nixpkgs/nixos-unstable"; #unstable
 			sops-nix.url = "github:Mic92/sops-nix";
 		home-manager.url = "github:nix-community/home-manager/release-25.05";
-		home-manager.inputs.nixpkgs.follows = "nixpkgs";
+		home-manager.inputs.nixpkgs.follows = "unstable";
 
 		quickshell = {
 			url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
@@ -32,7 +32,7 @@
 					home-manager.nixosModules.home-manager
 					{
 						home-manager.useGlobalPkgs = true;
-						home-manager.useUserPackages = true;
+						home-manager.useUserPackages = false;
 
 						home-manager.backupFileExtension = "backup";
 # configure your user here
@@ -44,8 +44,8 @@
 						};
 
 						home-manager.extraSpecialArgs = {
-							inherit unstablePkgs ;
-							quickshell=quickshell;
+						inherit unstablePkgs;
+							quickshell= unstablePkgs.quickshell;
 						};
 					}
 			];

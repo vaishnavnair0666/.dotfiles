@@ -12,7 +12,11 @@ in
     fastfetch
     firefox
     wl-clipboard
-	quickshell.packages.${pkgs.system}.default
+    # If/when you need extra QML modules, use withModules with a LIST, e.g.:
+    # (quickshell.packages.${pkgs.system}.default.withModules [
+    #   pkgs.qt6.qtimageformats
+    # ])
+	quickshell
   ];
   programs.bash.enable = true;
   programs.bash= {
