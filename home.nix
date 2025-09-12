@@ -1,22 +1,22 @@
 { config, pkgs, lib, unstablePkgs, quickshell, ... }:
 let
-    decryptedKey = builtins.readFile (builtins.toPath ./modules/secrets/github.ssh.enc);
+decryptedKey = builtins.readFile (builtins.toPath ./modules/secrets/github.ssh.enc);
 in
 {
-  home.username = "vaish";
-  home.homeDirectory = "/home/vaish";
+	home.username = "vaish";
+	home.homeDirectory = "/home/vaish";
 
-  home.packages = with pkgs; [
-    alacritty
-    btop
-    fastfetch
-    firefox
-    wl-clipboard
-    # If/when you need extra QML modules, use withModules with a LIST, e.g.:
-    # (quickshell.packages.${pkgs.system}.default.withModules [
-    #   pkgs.qt6.qtimageformats
-    # ])
-	quickshell
+	home.packages = with pkgs; [
+		alacritty
+			btop
+			fastfetch
+			firefox
+			wl-clipboard
+# If/when you need extra QML modules, use withModules with a LIST, e.g.:
+# (quickshell.packages.${pkgs.system}.default.withModules [
+#   pkgs.qt6.qtimageformats
+# ])
+			(quickshell.packages.${pkgs.system}.default)
   ];
   programs.bash.enable = true;
   programs.bash= {
