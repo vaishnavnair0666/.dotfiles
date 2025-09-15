@@ -1,16 +1,32 @@
-import Quickshell 1.0
-import QtQuick 2.15
+import Quickshell
+import QtQuick
+// Import your modules from the modules/ folder
+import "modules"
+PanelWindow {
+    anchors {
+        top: true
+        left: true
+        right: true
+    }
+    implicitHeight: 30
+    color: "#282c34"
 
-Shell {
-    Panel {
-        anchors {
-            left: parent.left
-            top: parent.top
-            bottom: parent.bottom
+    Row {
+        anchors.fill: parent
+        spacing: 10
+        padding: 10
+
+        // Left: Workspace names
+        WorkspaceModule { }
+
+        // Center: Clock
+        Item { 
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+            ClockModule { }
         }
-        width: 200
 
-        Clock { } // <-- your widget
+        // Right: System info + buttons
+        SysInfoModule { }
     }
 }
-

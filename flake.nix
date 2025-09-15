@@ -45,7 +45,7 @@
 
 						home-manager.extraSpecialArgs = {
 						inherit unstablePkgs;
-							quickshell= inputs.quickshell;
+							inherit quickshell;
 						};
 					}
 			];

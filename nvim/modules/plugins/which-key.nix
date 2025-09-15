@@ -176,12 +176,12 @@
 
 			{
 				__unkeyed-1 = "<leader>3";
-				__unkeyed-2 = "<cmd>BufferLineGoToBuffer 2<CR>";
+				__unkeyed-2 = "<cmd>BufferLineGoToBuffer 3<CR>";
 				desc = "Go to buffer 3";
 			}
 			{
 				__unkeyed-1 = "<leader>4";
-				__unkeyed-2 = "<cmd>BufferLineGoToBuffer 2<CR>";
+				__unkeyed-2 = "<cmd>BufferLineGoToBuffer 4<CR>";
 				desc = "Go to buffer 4";
 			}
 # Close

@@ -1,0 +1,4 @@
+WorkspaceModule 1.0 WorkspaceModule.qml
+ClockModule     1.0 ClockModule.qml
+SysInfoModule   1.0 SysInfoModule.qml
+
