@@ -26,6 +26,7 @@
 					./modules/plugins/notify.nix
 					./modules/plugins/ui.nix
 					./modules/plugins/which-key.nix
+					./modules/plugins/pandoc.nix
 
 
 			];

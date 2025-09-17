@@ -30,6 +30,7 @@
     ./modules/portal.nix
     ./modules/apps.nix
 	./modules/dev.nix
+	./modules/documentEditor.nix
   ];
 }
 
