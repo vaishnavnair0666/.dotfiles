@@ -1,13 +1,19 @@
 import QtQuick
-
+import Quickshell
+import Quickshell.Hyprland
 Item {
-    width: 120
+    id: root
     height: 30
+    // width will expand with contents
 
-    Text {
-        anchors.centerIn: parent
-        text: "Workspace 1"
-        font.bold: true
-        color: "#ffffff"
-    }
-}
+	Row {
+		anchors.fill: parent
+		spacing: 8
+		Repeater {
+			model: Hyprland.workspaces
+			delegate: Text {
+				text: modelData.name
+				color: modelData.active ? "white" : "gray"
+			}
+		}    }
+	}

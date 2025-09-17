@@ -8,7 +8,7 @@ PanelWindow {
         left: true
         right: true
     }
-    implicitHeight: 30
+    implicitHeight: 40
     color: "#282c34"
 
     Row {
@@ -26,7 +26,11 @@ PanelWindow {
             ClockModule { }
         }
 
-        // Right: System info + buttons
-        SysInfoModule { }
+        // Center: System info + buttons
+		Item {
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+			SysInfoModule { }
+	}
     }
 }

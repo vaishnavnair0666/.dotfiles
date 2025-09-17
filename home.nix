@@ -16,12 +16,26 @@ in
 # (quickshell.packages.${pkgs.system}.default.withModules [
 #   pkgs.qt6.qtimageformats
 # ])
-			(quickshell.packages.${pkgs.system}.default.withModules [
+			(quickshell.packages.${unstablePkgs.system}.default.withModules [
+# Core Qt modules (needed for many components)
 			 unstablePkgs.qt6.qtdeclarative
 			 unstablePkgs.qt6.qtwayland
 			 unstablePkgs.qt6.qtsvg
+			 unstablePkgs.qt6.qttools
+			 unstablePkgs.qt6.qt5compat
+			 unstablePkgs.qt6.qtmultimedia
+			 unstablePkgs.qt6.qtshadertools
+			 unstablePkgs.qt6.qtimageformats
+
+# # Quickshell extension modules
+# 			 quickshell.packages.${unstablePkgs.system}.icccm
+# 			 quickshell.packages.${unstablePkgs.system}.ewmh
+# 			 quickshell.packages.${unstablePkgs.system}.wayland
+# 			 quickshell.packages.${unstablePkgs.system}.gtk
+# 			 quickshell.packages.${unstablePkgs.system}.systemstats
+# 			 quickshell.packages.${unstablePkgs.system}.notifications
 			])
-	];
+			];
 	programs.bash.enable = true;
 	programs.bash= {
 		bashrcExtra = ''
